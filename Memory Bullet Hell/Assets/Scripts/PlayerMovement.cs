@@ -1,17 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI levelText;
     private Rigidbody2D rb;
     private Vector2 movement;
     private int score = 0;
+    
 
     private void OnEnable()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        levelText.SetText("Level: " + SceneManager.GetActiveScene().name);
+        scoreText.SetText("Score: 0");
         UpdateHandler.FixedUpdateOccurred += PlayerMove;
         UpdateHandler.UpdateOccurred += GetMovementInput;
     }
@@ -36,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag.Equals("Bullet")) {
             score += collision.gameObject.GetComponent<BulletMovementPreliminary>().getPoints();
+            scoreText.SetText("Score: " + score);
             collision.gameObject.SetActive(false);
         }
     }
