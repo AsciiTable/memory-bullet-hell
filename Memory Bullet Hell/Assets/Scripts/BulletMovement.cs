@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5.0f;
+    [SerializeField] protected float speed = 5.0f;
     [SerializeField] protected int pointValue = 1;
     protected bool destroyOnTouch = true;
     //[SerializeField] private Transform startpoint;

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BulletBouncy : BulletMovement
 {
-    [SerializeField] private float initialThrustX = 1.0f;
-    [SerializeField] private float initialThrustY = 1.0f;
+    [SerializeField] protected float initialThrustX = 1.0f;
+    [SerializeField] protected float initialThrustY = 1.0f;
+    private Rigidbody2D rb;
     protected override void OnEnable()
     {
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
         //this.transform.position = startpoint.transform.position;
-        BouncyBulletThrust();
+        BouncyBulletThrust(initialThrustX, initialThrustY, rb);
     }
 
     protected override void OnDisable()
@@ -17,8 +19,9 @@ public class BulletBouncy : BulletMovement
         // nothing pls thanks
     }
 
-    protected void BouncyBulletThrust() {
-        this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(initialThrustX, initialThrustY));
+    protected void BouncyBulletThrust(float x, float y, Rigidbody2D r) {
+        r.velocity = new Vector2(0f,0f);
+        r.AddForce(new Vector2(x, y));
     }
 
     public void SetDirection(float x, float y) {

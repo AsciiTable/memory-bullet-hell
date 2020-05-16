@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Knowledge : MonoBehaviour
 {
+    private enum BulletType { 
+        Regular,
+        Bouncy,
+        Pong
+    }
+    [SerializeField] BulletType bulletType;
     [SerializeField] private GameObject extraBulletsPlease;
-    [SerializeField] private bool bouncy;
     [SerializeField] private float bouncyX;
     [SerializeField] private float bouncyY;
+    [SerializeField] private List<Vector2> newPongDirections;
     private float startTime;
     private float extraBulletCount;
 
@@ -28,7 +34,7 @@ public class Knowledge : MonoBehaviour
     private void OnDisable()
     {
         UpdateHandler.UpdateOccurred -= ShootByIntervals;
-        Debug.Log(extraBulletCount + " extra bullet(s) instantiated");
+        Debug.Log(extraBulletCount + " extra " + bulletType.ToString() + "bullet(s) instantiated");
     }
 
     private void ShootByIntervals() {
@@ -41,13 +47,25 @@ public class Knowledge : MonoBehaviour
 
     private void Shoot() {
         GameObject bullet;
-        if (bouncy) {
+        if (bulletType.Equals(BulletType.Bouncy)) {
             bullet = ObjectPooler.SharedInstanceBouncy.GetPooledObject();
-            bullet.GetComponent<BulletBouncy>().SetDirection(bouncyX, bouncyY);
+        }
+        else if (bulletType.Equals(BulletType.Pong)) {
+            bullet = ObjectPooler.SharedInstancePong.GetPooledObject();
         } 
         else
             bullet = ObjectPooler.SharedInstanceBullet.GetPooledObject();
+
         if (bullet != null){
+            if (bulletType.Equals(BulletType.Bouncy))
+            {
+                bullet.GetComponent<BulletBouncy>().SetDirection(bouncyX, bouncyY);
+            }
+            else if (bulletType.Equals(BulletType.Pong))
+            {
+                bullet.GetComponent<BulletPong>().SetDirection(bouncyX, bouncyY);
+                bullet.GetComponent<BulletPong>().SetNewPongDirections(newPongDirections);
+            }
             bullet.transform.position = this.transform.position;
             bullet.transform.rotation = this.transform.rotation;
             bullet.SetActive(true);

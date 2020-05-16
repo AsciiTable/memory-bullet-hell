@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
+    private enum BulletType
+    {
+        Regular,
+        Bouncy,
+        Pong
+    }
+    [SerializeField] BulletType bulletType;
     public static ObjectPooler SharedInstanceBullet;
     public static ObjectPooler SharedInstanceBouncy;
+    public static ObjectPooler SharedInstancePong;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
-    public bool bouncy;
 
     private void Awake()
     {
-        if (bouncy)
+        if (bulletType.Equals(BulletType.Bouncy))
             SharedInstanceBouncy = this;
+        else if (bulletType.Equals(BulletType.Pong))
+            SharedInstancePong = this;
         else
             SharedInstanceBullet = this;
     }
