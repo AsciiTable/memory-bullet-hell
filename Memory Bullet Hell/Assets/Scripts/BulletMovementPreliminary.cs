@@ -18,6 +18,11 @@ public class BulletMovementPreliminary : MonoBehaviour
         UpdateHandler.UpdateOccurred -= bulletMoveLeft;
     }
 
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void bulletMoveLeft() {
         this.transform.position -= new Vector3(speed * Time.deltaTime, 0f, 0f);
     }

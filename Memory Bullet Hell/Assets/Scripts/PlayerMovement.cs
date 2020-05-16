@@ -25,4 +25,12 @@ public class PlayerMovement : MonoBehaviour
             this.transform.position += new Vector3(0f, speed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Hit smth");
+        if (collision.tag.Equals("Bullet")) {
+            collision.gameObject.SetActive(false);
+        }
+    }
 }
