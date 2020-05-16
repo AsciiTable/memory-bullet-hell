@@ -5,32 +5,43 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
-    [SerializeField] private int pointValue = 1;
+    [SerializeField] protected int pointValue = 1;
+    protected bool destroyOnTouch = true;
     //[SerializeField] private Transform startpoint;
     //[SerializeField] private float endpointX;
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         //this.transform.position = startpoint.transform.position;
         UpdateHandler.UpdateOccurred += bulletMoveLeft;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         UpdateHandler.UpdateOccurred -= bulletMoveLeft;
     }
 
-    private void OnBecameInvisible()
+    protected void OnBecameInvisible()
     {
         gameObject.SetActive(false);
     }
 
-    private void bulletMoveLeft()
+    protected void bulletMoveLeft()
     {
         this.transform.position -= new Vector3(speed * Time.deltaTime, 0f, 0f);
     }
 
-    public int getPoints()
+/*    public int getPoints()
     {
         return pointValue;
+    }*/
+
+    public virtual int interactWithPlayer() {
+        gameObject.SetActive(false);
+        return pointValue;
+    }
+
+    public bool getDestroyOnTouch()
+    {
+        return destroyOnTouch;
     }
 }

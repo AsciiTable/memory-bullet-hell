@@ -41,10 +41,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Bullet")) {
-            score += collision.gameObject.GetComponent<BulletMovement>().getPoints();
+        if (collision.tag.Equals("Bullet") && collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch()) {
+            score += collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
             scoreText.SetText("Score: " + score);
-            collision.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Bullet") && !collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch())
+        {
+            score += collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
+            scoreText.SetText("Score: " + score);
         }
     }
 }
