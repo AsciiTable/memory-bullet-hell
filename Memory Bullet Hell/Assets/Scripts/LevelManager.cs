@@ -4,32 +4,131 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-
-    [SerializeField] private float level = 0;
+    public static LevelManager instance = null;
 
     private Animator animator = null;
+    private AudioSource audioSource = null;
 
+    [SerializeField] private int level = 0;
+    [Tooltip("0 = Level Select, 1 = Level Intro, 2 = Intro Loop, 3 = Level")]
+    [SerializeField] private int levelStage = 0;
+
+    [SerializeField] private int score;
+
+    [Header("Level Music")]
+    [SerializeField] private AudioClip[] tutorialMusic = null;
+    [SerializeField] private AudioClip[] tutorialLoops = null;
+    [SerializeField] private AudioClip[] levelMusic = null;
+
+    private int[] tutorialRequirements = { 1, 6 };
+
+
+    public int AddScore(int score) { 
+        this.score += score;
+        return this.score;
+    }
+    public int GetScore() { return score; }
+    private void OnEnable()
+    {
+        //Singleton
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(this);
+
+        UpdateHandler.UpdateOccurred += CheckLevelEnded;
+    }
     private void OnDisable()
     {
-        StopCoroutine(StartLevel());
+        StopCoroutine(LevelSelect());
+        UpdateHandler.UpdateOccurred -= CheckLevelEnded;
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        StartCoroutine(StartLevel());
+        audioSource = GetComponentInChildren<AudioSource>();
+        StartCoroutine(LevelSelect());
     }
-    private IEnumerator StartLevel()
+
+    private AudioClip GetMusic()
+    {
+        //1 - Tutorial Intro
+        if (levelStage == 0)
+        {
+            audioSource.clip = tutorialMusic[level - 1];
+            audioSource.loop = false;
+            return tutorialLoops[level - 1];
+        }
+        //2 - Tutorial Loop
+        else if (levelStage == 1)
+        {
+            audioSource.clip = tutorialLoops[level - 1];
+            audioSource.loop = true;
+            return tutorialMusic[level - 1];
+        }
+        else if (levelStage == 2)
+        {
+            audioSource.clip = levelMusic[level - 1];
+            audioSource.loop = false;
+            return levelMusic[level - 1];
+        }
+        else
+            return null;
+        
+    }
+
+    //Go to next Level if in Level Select
+    private IEnumerator LevelSelect()
     {
         yield return new WaitForSeconds(0.5f);
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level Select"))
         {
-            level += 0.5f;
-            animator.SetFloat("Level", level);
-            animator.SetTrigger("StartLevel");
+            animator.SetInteger("Level", level);
+            StartLevel();
         }
 
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(StartLevel());
+        StartCoroutine(LevelSelect());
+    }
+
+    private void StartLevel()
+    {
+        Debug.Log("Changing Song");
+        GetMusic();
+        audioSource.Play();
+        animator.SetTrigger("TransitionLevel");
+    }
+
+    private void CheckLevelEnded()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level Select"))
+            return;
+
+        if (levelStage == 0)
+        {
+            if (!audioSource.isPlaying)
+            {
+                levelStage++;
+                animator.SetInteger("Stage", levelStage);
+                StartLevel();
+            }
+        } 
+        else if (levelStage == 1)
+        {
+            if(score >= tutorialRequirements[level - 1])
+            {
+                levelStage++;
+                animator.SetInteger("Stage", levelStage);
+                StartLevel();
+            }
+        }
+        if (levelStage == 2 || levelStage == 3)
+        {
+            if (!audioSource.isPlaying)
+            {
+                
+            }
+        }
     }
 }

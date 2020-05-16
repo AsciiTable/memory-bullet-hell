@@ -10,9 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI levelText;
     private Rigidbody2D rb;
-    private Vector2 movement;
-    private int score = 0;
-    
+    private Vector2 movement;    
 
     private void OnEnable()
     {
@@ -25,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("Score: " + score);
+        Debug.Log("Score: " + LevelManager.instance.GetScore()) ;
         UpdateHandler.FixedUpdateOccurred -= PlayerMove;
         UpdateHandler.UpdateOccurred -= GetMovementInput;
     }
@@ -42,8 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Bullet") && collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch()) {
-            score += collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            scoreText.SetText("Score: " + score);
+            int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
+            scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
         }
     }
 
@@ -51,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag.Equals("Bullet") && !collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch())
         {
-            score += collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            scoreText.SetText("Score: " + score);
+            int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
+            scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
         }
     }
 }
