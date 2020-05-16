@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1756661442365727625}
   - component: {fileID: 1756661442365727626}
   - component: {fileID: 1756661442365727627}
+  - component: {fileID: 3896049732106522485}
   m_Layer: 0
   m_Name: Handlers
   m_TagString: Untagged
@@ -60,3 +61,21 @@ MonoBehaviour:
   objectToPool: {fileID: 3352732970056929221, guid: 8e385c8e76ea1604f91d0367a25c7f8c,
     type: 3}
   amountToPool: 10
+  bouncy: 0
+--- !u!114 &3896049732106522485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756661442365727624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b307f3cfc37c7c44a96d015899f21a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 2393612978318206405, guid: f2f6e0bb8c508f5438d3e1e5b0d468d2,
+    type: 3}
+  amountToPool: 10
+  bouncy: 1

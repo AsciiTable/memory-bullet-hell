@@ -5,6 +5,9 @@ using UnityEngine;
 public class Knowledge : MonoBehaviour
 {
     [SerializeField] private GameObject extraBulletsPlease;
+    [SerializeField] private bool bouncy;
+    [SerializeField] private float bouncyX;
+    [SerializeField] private float bouncyY;
     private float startTime;
     private float extraBulletCount;
 
@@ -37,7 +40,13 @@ public class Knowledge : MonoBehaviour
     }
 
     private void Shoot() {
-        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject();
+        GameObject bullet;
+        if (bouncy) {
+            bullet = ObjectPooler.SharedInstanceBouncy.GetPooledObject();
+            bullet.GetComponent<BulletBouncy>().SetDirection(bouncyX, bouncyY);
+        } 
+        else
+            bullet = ObjectPooler.SharedInstanceBullet.GetPooledObject();
         if (bullet != null){
             bullet.transform.position = this.transform.position;
             bullet.transform.rotation = this.transform.rotation;

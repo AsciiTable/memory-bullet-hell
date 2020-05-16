@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2393612978318206403}
   - component: {fileID: 2393612978318206401}
   - component: {fileID: 2393612978318206402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bouncy
   m_TagString: Bullet
   m_Icon: {fileID: 0}

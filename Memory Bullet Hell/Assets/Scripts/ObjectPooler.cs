@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
-    public static ObjectPooler SharedInstance;
+    public static ObjectPooler SharedInstanceBullet;
+    public static ObjectPooler SharedInstanceBouncy;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
+    public bool bouncy;
 
     private void Awake()
     {
-        SharedInstance = this;
+        if (bouncy)
+            SharedInstanceBouncy = this;
+        else
+            SharedInstanceBullet = this;
     }
 
     private void Start()
