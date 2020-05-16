@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletMovementPreliminary : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
+    [SerializeField] private int pointValue = 1;
     //[SerializeField] private Transform startpoint;
     //[SerializeField] private float endpointX;
     private void OnEnable()
@@ -25,5 +26,9 @@ public class BulletMovementPreliminary : MonoBehaviour
 
     private void bulletMoveLeft() {
         this.transform.position -= new Vector3(speed * Time.deltaTime, 0f, 0f);
+    }
+
+    public int getPoints() {
+        return pointValue;
     }
 }
