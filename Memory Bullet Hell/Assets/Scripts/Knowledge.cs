@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class Knowledge : MonoBehaviour
 {
-    [SerializeField] private float timeInterval = 1.0f;
     [SerializeField] private GameObject extraBulletsPlease;
     private float startTime;
     private float extraBulletCount;
 
-    [Header("Testing Y Position")]
-    [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private float yMax = 0f;
-    [SerializeField] private float yMin = -10f;
+    [Header("Turret Customization")]
+    [SerializeField] private float timeInterval = 1.0f;
+    [Tooltip("Toggle to have turret shoot Immediately (Initial to shoot is true)")]
+    [SerializeField] private bool shoot = false;
+
+    private bool shootState = false;
 
     private void OnEnable()
     {
         startTime = Time.time;
         extraBulletCount = 0;
         UpdateHandler.UpdateOccurred += ShootByIntervals;
-        UpdateHandler.UpdateOccurred += MoveUpDown;
     }
 
     private void OnDisable()
     {
         UpdateHandler.UpdateOccurred -= ShootByIntervals;
-        UpdateHandler.UpdateOccurred -= MoveUpDown;
         Debug.Log(extraBulletCount + " extra bullet(s) instantiated");
     }
 
     private void ShootByIntervals() {
-        if (Time.time - startTime >= timeInterval) {
+        if ((Time.time - startTime >= timeInterval) || (shoot != shootState)) {
             Shoot();
             startTime = Time.time;
+            shootState = shoot;
         }
     }
 
@@ -47,17 +47,5 @@ public class Knowledge : MonoBehaviour
             Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation);
             extraBulletCount++;
         }
-    }
-
-    //Turret Moving Up and Down
-    private void MoveUpDown()
-    {
-
-        if((transform.position.y >= yMax && moveSpeed > 0) || (transform.position.y <= yMin && moveSpeed < 0))
-        {
-            moveSpeed *= -1;
-        }
-
-        transform.position += new Vector3(0, moveSpeed, 0) * Time.deltaTime;
     }
 }
