@@ -5,15 +5,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
-        
+        UpdateHandler.UpdateOccurred += PlayerMove;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        UpdateHandler.UpdateOccurred -= PlayerMove;
+    }
+
+    private void PlayerMove() {
+        if (Input.GetButton("Horizontal")) {
+            this.transform.position += new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
+        }
+
+        if (Input.GetButton("Vertical")){
+            this.transform.position += new Vector3(0f, speed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
+        }
     }
 }
