@@ -5,30 +5,33 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
+    private Rigidbody2D rb;
+    private Vector2 movement;
 
     private void OnEnable()
     {
-        UpdateHandler.UpdateOccurred += PlayerMove;
+        rb = this.GetComponent<Rigidbody2D>();
+        UpdateHandler.FixedUpdateOccurred += PlayerMove;
+        UpdateHandler.UpdateOccurred += GetMovementInput;
     }
 
     private void OnDisable()
     {
-        UpdateHandler.UpdateOccurred -= PlayerMove;
+        UpdateHandler.FixedUpdateOccurred -= PlayerMove;
+        UpdateHandler.UpdateOccurred -= GetMovementInput;
     }
 
     private void PlayerMove() {
-        if (Input.GetButton("Horizontal")) {
-            this.transform.position += new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
-        }
+        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+    }
 
-        if (Input.GetButton("Vertical")){
-            this.transform.position += new Vector3(0f, speed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
-        }
+    private void GetMovementInput() {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit smth");
         if (collision.tag.Equals("Bullet")) {
             collision.gameObject.SetActive(false);
         }

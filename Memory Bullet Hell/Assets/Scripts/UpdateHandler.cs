@@ -11,4 +11,12 @@ public class UpdateHandler : MonoBehaviour
         if (UpdateOccurred != null)
             UpdateOccurred();
     }
+
+    public delegate void onFixedUpdate();
+    public static event onFixedUpdate FixedUpdateOccurred;
+    private void FixedUpdate()
+    {
+        if (FixedUpdateOccurred != null)
+            FixedUpdateOccurred();
+    }
 }
