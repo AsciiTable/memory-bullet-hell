@@ -9,16 +9,23 @@ public class Knowledge : MonoBehaviour
     private float startTime;
     private float extraBulletCount;
 
+    [Header("Testing Y Position")]
+    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float yMax = 0f;
+    [SerializeField] private float yMin = -10f;
+
     private void OnEnable()
     {
         startTime = Time.time;
         extraBulletCount = 0;
         UpdateHandler.UpdateOccurred += ShootByIntervals;
+        UpdateHandler.UpdateOccurred += MoveUpDown;
     }
 
     private void OnDisable()
     {
         UpdateHandler.UpdateOccurred -= ShootByIntervals;
+        UpdateHandler.UpdateOccurred -= MoveUpDown;
         Debug.Log(extraBulletCount + " extra bullet(s) instantiated");
     }
 
@@ -40,5 +47,17 @@ public class Knowledge : MonoBehaviour
             Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation);
             extraBulletCount++;
         }
+    }
+
+    //Turret Moving Up and Down
+    private void MoveUpDown()
+    {
+
+        if((transform.position.y >= yMax && moveSpeed > 0) || (transform.position.y <= yMin && moveSpeed < 0))
+        {
+            moveSpeed *= -1;
+        }
+
+        transform.position += new Vector3(0, moveSpeed, 0) * Time.deltaTime;
     }
 }
