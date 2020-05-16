@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Bullet")) {
-            score += collision.gameObject.GetComponent<BulletMovementPreliminary>().getPoints();
+            score += collision.gameObject.GetComponent<BulletMovement>().getPoints();
             scoreText.SetText("Score: " + score);
             collision.gameObject.SetActive(false);
         }

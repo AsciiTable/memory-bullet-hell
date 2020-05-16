@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMovementPreliminary : MonoBehaviour
+public class BulletMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private int pointValue = 1;
@@ -24,11 +24,13 @@ public class BulletMovementPreliminary : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void bulletMoveLeft() {
+    private void bulletMoveLeft()
+    {
         this.transform.position -= new Vector3(speed * Time.deltaTime, 0f, 0f);
     }
 
-    public int getPoints() {
+    public int getPoints()
+    {
         return pointValue;
     }
 }
