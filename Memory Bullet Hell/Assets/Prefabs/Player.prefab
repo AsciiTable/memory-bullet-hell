@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  scoreText: {fileID: 0}
-  levelText: {fileID: 0}
+  scoreText: {fileID: 2611982621531140703, guid: a6bfc5c5cd40d2247bab8aa4aec1df31,
+    type: 3}
+  audio: {fileID: 2319084080195649586, guid: a254d81ee5ef7294c85b42990820343f, type: 3}
 --- !u!50 &6790758636166866041
 Rigidbody2D:
   serializedVersion: 4
