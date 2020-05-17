@@ -175,12 +175,12 @@ GameObject:
   - component: {fileID: 8433961134600286081}
   - component: {fileID: 4380875828573627837}
   m_Layer: 5
-  m_Name: Tutorial
+  m_Name: Lore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1240135099602746611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6220007761605643403
 RectTransform:
   m_ObjectHideFlags: 0
@@ -894,12 +894,12 @@ GameObject:
   - component: {fileID: 4026588929009280431}
   - component: {fileID: 2736537308805878199}
   m_Layer: 5
-  m_Name: Lore
+  m_Name: LoreCANCELLED until further notice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1938156237910767385
 RectTransform:
   m_ObjectHideFlags: 0
