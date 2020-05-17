@@ -245,7 +245,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   scoreText: {fileID: 0}
-  levelText: {fileID: 0}
 --- !u!50 &20084268
 Rigidbody2D:
   serializedVersion: 4
@@ -845,7 +844,7 @@ PrefabInstance:
     - target: {fileID: 5962823969040393756, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: shoot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969040393757, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
@@ -855,7 +854,7 @@ PrefabInstance:
     - target: {fileID: 5962823969040393757, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969237591608, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
@@ -880,7 +879,7 @@ PrefabInstance:
     - target: {fileID: 5962823969237591611, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 5962823970198154972, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
