@@ -44,4 +44,8 @@ public class BulletMovement : MonoBehaviour
     {
         return destroyOnTouch;
     }
+
+    public void SetBulletSpeed(float s) {
+        speed = s;
+    }
 }
