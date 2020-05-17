@@ -16,6 +16,7 @@ public class Knowledge : MonoBehaviour
     [SerializeField] private List<Vector2> newPongDirections;
     private float startTime;
     private float extraBulletCount;
+    [SerializeField] private bool disableAll;
 
     [Header("Turret Customization")]
     [SerializeField] private float timeInterval = 1.0f;
@@ -26,6 +27,7 @@ public class Knowledge : MonoBehaviour
 
     private void OnEnable()
     {
+        disableAll = false;
         startTime = Time.time;
         extraBulletCount = 0;
         UpdateHandler.UpdateOccurred += ShootByIntervals;
@@ -39,6 +41,19 @@ public class Knowledge : MonoBehaviour
     }
 
     private void ShootByIntervals() {
+        if (disableAll) {
+            if (bulletType.Equals(BulletType.Bouncy))
+            {
+                ObjectPooler.SharedInstanceBouncy.DisableAllBullets();
+            }
+            else if (bulletType.Equals(BulletType.Pong))
+            {
+                ObjectPooler.SharedInstanceBullet.DisableAllBullets();
+            }
+            else
+                ObjectPooler.SharedInstancePong.DisableAllBullets();
+        }
+            
         if ((Time.time - startTime >= timeInterval && timeInterval != 0) || (shoot != shootState)) {
             Shoot();
             startTime = Time.time;
@@ -72,7 +87,17 @@ public class Knowledge : MonoBehaviour
             bullet.SetActive(true);
         }
         else {
-            Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation);
+            if (bulletType.Equals(BulletType.Bouncy))
+            {
+                ObjectPooler.SharedInstanceBouncy.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
+            }
+            else if (bulletType.Equals(BulletType.Pong))
+            {
+                ObjectPooler.SharedInstancePong.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
+            }
+            else
+                ObjectPooler.SharedInstanceBullet.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
+
             extraBulletCount++;
         }
     }
