@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class Knowledge : MonoBehaviour
 {
+    private enum BulletType { 
+        Regular,
+        Bouncy,
+        Pong
+    }
+    [SerializeField] BulletType bulletType;
     [SerializeField] private GameObject extraBulletsPlease;
+    [SerializeField] private float bouncyX;
+    [SerializeField] private float bouncyY;
+    [SerializeField] private List<Vector2> newPongDirections;
     private float startTime;
     private float extraBulletCount;
+    [SerializeField] private bool disableAll;
 
     [Header("Turret Customization")]
     [SerializeField] private float timeInterval = 1.0f;
@@ -17,19 +27,34 @@ public class Knowledge : MonoBehaviour
 
     private void OnEnable()
     {
+        disableAll = false;
         startTime = Time.time;
         extraBulletCount = 0;
         UpdateHandler.UpdateOccurred += ShootByIntervals;
+        shootState = shoot;
     }
 
     private void OnDisable()
     {
         UpdateHandler.UpdateOccurred -= ShootByIntervals;
-        Debug.Log(extraBulletCount + " extra bullet(s) instantiated");
+        Debug.Log(extraBulletCount + " extra " + bulletType.ToString() + "bullet(s) instantiated");
     }
 
     private void ShootByIntervals() {
-        if ((Time.time - startTime >= timeInterval) || (shoot != shootState)) {
+        if (disableAll) {
+            if (bulletType.Equals(BulletType.Bouncy))
+            {
+                ObjectPooler.SharedInstanceBouncy.DisableAllBullets();
+            }
+            else if (bulletType.Equals(BulletType.Pong))
+            {
+                ObjectPooler.SharedInstanceBullet.DisableAllBullets();
+            }
+            else
+                ObjectPooler.SharedInstancePong.DisableAllBullets();
+        }
+            
+        if ((Time.time - startTime >= timeInterval && timeInterval != 0) || (shoot != shootState)) {
             Shoot();
             startTime = Time.time;
             shootState = shoot;
@@ -37,14 +62,42 @@ public class Knowledge : MonoBehaviour
     }
 
     private void Shoot() {
-        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject();
+        GameObject bullet;
+        if (bulletType.Equals(BulletType.Bouncy)) {
+            bullet = ObjectPooler.SharedInstanceBouncy.GetPooledObject();
+        }
+        else if (bulletType.Equals(BulletType.Pong)) {
+            bullet = ObjectPooler.SharedInstancePong.GetPooledObject();
+        } 
+        else
+            bullet = ObjectPooler.SharedInstanceBullet.GetPooledObject();
+
         if (bullet != null){
+            if (bulletType.Equals(BulletType.Bouncy))
+            {
+                bullet.GetComponent<BulletBouncy>().SetDirection(bouncyX, bouncyY);
+            }
+            else if (bulletType.Equals(BulletType.Pong))
+            {
+                bullet.GetComponent<BulletPong>().SetDirection(bouncyX, bouncyY);
+                bullet.GetComponent<BulletPong>().SetNewPongDirections(newPongDirections);
+            }
             bullet.transform.position = this.transform.position;
             bullet.transform.rotation = this.transform.rotation;
             bullet.SetActive(true);
         }
         else {
-            Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation);
+            if (bulletType.Equals(BulletType.Bouncy))
+            {
+                ObjectPooler.SharedInstanceBouncy.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
+            }
+            else if (bulletType.Equals(BulletType.Pong))
+            {
+                ObjectPooler.SharedInstancePong.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
+            }
+            else
+                ObjectPooler.SharedInstanceBullet.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
+
             extraBulletCount++;
         }
     }

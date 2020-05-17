@@ -8,24 +8,24 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI levelText;
+    //[SerializeField] private TextMeshProUGUI levelText;
     private Rigidbody2D rb;
-    private Vector2 movement;
-    private int score = 0;
-    
+    private Vector2 movement;    
 
     private void OnEnable()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        levelText.SetText("Level: " + SceneManager.GetActiveScene().name);
-        scoreText.SetText("Score: 0");
+/*        if(levelText != null)
+            levelText.SetText("Level: " + SceneManager.GetActiveScene().name);*/
+        if(scoreText != null)
+            scoreText.SetText("Score: 0");
         UpdateHandler.FixedUpdateOccurred += PlayerMove;
         UpdateHandler.UpdateOccurred += GetMovementInput;
     }
 
     private void OnDisable()
     {
-        Debug.Log("Score: " + score);
+        Debug.Log("Score: " + LevelManager.instance.GetScore()) ;
         UpdateHandler.FixedUpdateOccurred -= PlayerMove;
         UpdateHandler.UpdateOccurred -= GetMovementInput;
     }
@@ -42,8 +42,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Bullet") && collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch()) {
-            score += collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            scoreText.SetText("Score: " + score);
+            int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
+            LevelManager.instance.AddScore(add);
+            if(scoreText != null)
+                scoreText.SetText("Score: " + LevelManager.instance.GetScore());
         }
     }
 
@@ -51,8 +53,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag.Equals("Bullet") && !collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch())
         {
-            score += collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            scoreText.SetText("Score: " + score);
+            int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
+            LevelManager.instance.AddScore(add);
+            if (scoreText != null)
+                scoreText.SetText("Score: " + LevelManager.instance.GetScore());
         }
     }
 }

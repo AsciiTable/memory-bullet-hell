@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5858738926893161627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5858738926893161625}
+  - component: {fileID: 5858738926893161626}
+  m_Layer: 0
+  m_Name: Turret Pong
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5858738926893161625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5858738926893161627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.88, y: -6.99, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5858738926893161626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5858738926893161627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72cd5c3396347e48ad2f7e7bf8ddf89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletType: 2
+  extraBulletsPlease: {fileID: 5122997539160197667, guid: 9f54dd620ef120e499a9ac7ff4bc1ea7,
+    type: 3}
+  bouncyX: 200
+  bouncyY: 200
+  newPongDirections:
+  - {x: 100, y: 200}
+  - {x: 200, y: 100}
+  - {x: -500, y: 300}
+  - {x: -300, y: -500}
+  - {x: 300, y: 500}
+  timeInterval: 0.5
+  shoot: 0

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BulletColumn : BulletMovement
 {
-    //[Tooltip("Max amount of points user can earn if they stayed in for the whole time")]
-    //[SerializeField] private int fullPointValue = 10;
+    [SerializeField] private int fullPointValue = 10;
     [SerializeField] private float preColumnTime = 0.5f;
     [SerializeField] private float columnActiveTime = 10.0f;
     [SerializeField] private float postColumnTime = 0.2f;
@@ -13,9 +12,11 @@ public class BulletColumn : BulletMovement
     private Collider2D columnCol;
     private SpriteRenderer sprt;
     private float currTime;
+    private int totalEarnedPoints;
 
     protected override void OnEnable()
     {
+        totalEarnedPoints = 0;
         destroyOnTouch = false;
         columnCol = gameObject.GetComponent<Collider2D>();
         sprt = gameObject.GetComponent<SpriteRenderer>();
@@ -45,9 +46,11 @@ public class BulletColumn : BulletMovement
     public override int interactWithPlayer()
     {
         int earnablePoint = 0;
-        if (Time.time - currTime >= timeElapsedToNextPoint) {
+        if (totalEarnedPoints < fullPointValue && Time.time - currTime >= timeElapsedToNextPoint) {
             earnablePoint = pointValue;
             currTime = Time.time;
+            totalEarnedPoints += pointValue;
+            Debug.Log("Total Earned Points: " + totalEarnedPoints);
         }
         return earnablePoint;
     }
