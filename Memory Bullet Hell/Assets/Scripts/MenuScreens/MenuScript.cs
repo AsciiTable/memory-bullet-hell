@@ -48,12 +48,12 @@ public class MenuScript : MonoBehaviour
 
     public void GoToCredits() {
         credits.SetActive(true);
-        //main.SetActive(false);
+        main.SetActive(false);
     }
 
     public void GoToLore() {
         lore.SetActive(true);
-        //main.SetActive(false);
+        main.SetActive(false);
     }
 
     public void GoBackFromCredits() {
