@@ -46,4 +46,15 @@ public class ObjectPooler : MonoBehaviour
         }
         return null;
     }
+
+    public void AddNewPooledObject(GameObject n) {
+        pooledObjects.Add(n);
+    }
+
+    public void DisableAllBullets() {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            pooledObjects[i].SetActive(false);
+        }
+    }
 }

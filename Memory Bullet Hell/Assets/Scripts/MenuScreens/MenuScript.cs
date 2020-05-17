@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    [SerializeField] private GameObject main;
+    [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject lore;
     /*
      * This script depends on the scenes being in a specific order:
      * 0: Main Menu
@@ -42,4 +45,27 @@ public class MenuScript : MonoBehaviour
         Debug.Log("Stopping Application");
         Application.Quit();
     }
+
+    public void GoToCredits() {
+        credits.SetActive(true);
+        main.SetActive(false);
+    }
+
+    public void GoToLore() {
+        lore.SetActive(true);
+        main.SetActive(false);
+    }
+
+    public void GoBackFromCredits() {
+        main.SetActive(true);
+        credits.SetActive(false);
+    }
+
+    public void GoBackFromLore()
+    {
+        main.SetActive(true);
+        lore.SetActive(false);
+    }
+
+
 }

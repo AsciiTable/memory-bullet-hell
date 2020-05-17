@@ -95,7 +95,10 @@ public class LevelManager : MonoBehaviour
         animator.SetTrigger("TransitionLevel");
         GetMusic();
         audioSource.Play();
- 
+        GameObject[] bulletsToDisable = GameObject.FindGameObjectsWithTag("Bullet");
+        for (int i = 0; i < bulletsToDisable.Length; i++) {
+            bulletsToDisable[i].SetActive(false);
+        }
     }
     private void RestartLevel()
     {
