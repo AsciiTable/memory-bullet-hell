@@ -6,7 +6,6 @@ public class BulletPong : BulletBouncy
 {
     [SerializeField] List<Vector2> newPongDirections;
     private int numOfBouncesLeft;
-    private Rigidbody2D rb;
     private SpriteRenderer sprt;
     private float transparancyDecrement;
     private float transparancy;

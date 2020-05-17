@@ -6,7 +6,7 @@ public class BulletBouncy : BulletMovement
 {
     [SerializeField] protected float initialThrustX = 1.0f;
     [SerializeField] protected float initialThrustY = 1.0f;
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
     protected override void OnEnable()
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();

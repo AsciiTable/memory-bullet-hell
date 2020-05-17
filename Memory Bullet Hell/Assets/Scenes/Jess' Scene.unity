@@ -297,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 5974917620898338131, guid: 4adda1c367c27c842a2a8055f18cb210,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.85
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 5974917620898338131, guid: 4adda1c367c27c842a2a8055f18cb210,
         type: 3}
@@ -1000,7 +1000,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2014140130}
   - component: {fileID: 2014140129}
-  - component: {fileID: 2014140128}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1008,14 +1007,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &2014140128
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014140127}
-  m_Enabled: 1
 --- !u!20 &2014140129
 Camera:
   m_ObjectHideFlags: 0
