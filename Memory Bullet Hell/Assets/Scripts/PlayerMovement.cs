@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private AudioSource audio;
     //[SerializeField] private TextMeshProUGUI levelText;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -49,7 +50,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag.Equals("Bullet") && collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch()) {
             int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            LevelManager.instance.AddScore(add);
+            if (add > 0) {
+                audio.Play();
+                LevelManager.instance.AddScore(add);
+            }
+            
             if(scoreText != null)
                 scoreText.SetText("Score: " + LevelManager.instance.GetScore());
         }
@@ -60,7 +65,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag.Equals("Bullet") && !collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch())
         {
             int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            LevelManager.instance.AddScore(add);
+            if (add > 0)
+            {
+                audio.Play();
+                LevelManager.instance.AddScore(add);
+            }
             if (scoreText != null)
                 scoreText.SetText("Score: " + LevelManager.instance.GetScore());
         }
