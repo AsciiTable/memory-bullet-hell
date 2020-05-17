@@ -385,7 +385,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 1
+  timeInterval: 6
   shoot: 0
 --- !u!1 &948539024
 GameObject:
@@ -438,7 +438,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 2
+  timeInterval: 0
   shoot: 0
 --- !u!1 &967756783
 GameObject:
@@ -491,7 +491,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 2
+  timeInterval: 0
   shoot: 0
 --- !u!1 &1031611607
 GameObject:
@@ -544,7 +544,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 1
+  timeInterval: 0
   shoot: 0
 --- !u!1 &1416122112
 GameObject:
@@ -597,7 +597,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 1
+  timeInterval: 6
   shoot: 0
 --- !u!1 &1934704428
 GameObject:
@@ -650,7 +650,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 2
+  timeInterval: 0
   shoot: 0
 --- !u!1 &2014140127
 GameObject:
@@ -777,7 +777,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 1
+  timeInterval: 6
   shoot: 0
 --- !u!1001 &2129826390
 PrefabInstance:
@@ -929,12 +929,17 @@ PrefabInstance:
     - target: {fileID: 5962823969040393756, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: timeInterval
-      value: 1
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969040393756, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: shoot
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962823969040393756, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969040393757, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
@@ -954,12 +959,17 @@ PrefabInstance:
     - target: {fileID: 5962823969237591610, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: timeInterval
-      value: 2
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969237591610, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: shoot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962823969237591610, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969237591611, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
@@ -969,7 +979,7 @@ PrefabInstance:
     - target: {fileID: 5962823969237591611, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 5962823970198154972, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
@@ -989,12 +999,17 @@ PrefabInstance:
     - target: {fileID: 5962823970198154975, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: timeInterval
-      value: 1
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 5962823970198154975, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: shoot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962823970198154975, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ce758990c8ce124d994b5b9c94bd6fd, type: 3}
