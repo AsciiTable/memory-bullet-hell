@@ -15,8 +15,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        levelText.SetText("Level: " + SceneManager.GetActiveScene().name);
-        scoreText.SetText("Score: 0");
+        if(levelText != null)
+            levelText.SetText("Level: " + SceneManager.GetActiveScene().name);
+        if(scoreText != null)
+            scoreText.SetText("Score: 0");
         UpdateHandler.FixedUpdateOccurred += PlayerMove;
         UpdateHandler.UpdateOccurred += GetMovementInput;
     }
@@ -41,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag.Equals("Bullet") && collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch()) {
             int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
+            LevelManager.instance.AddScore(add);
+            if(scoreText != null)
+                scoreText.SetText("Score: " + LevelManager.instance.GetScore());
         }
     }
 
@@ -50,7 +54,9 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag.Equals("Bullet") && !collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch())
         {
             int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
+            LevelManager.instance.AddScore(add);
+            if (scoreText != null)
+                scoreText.SetText("Score: " + LevelManager.instance.GetScore());
         }
     }
 }
