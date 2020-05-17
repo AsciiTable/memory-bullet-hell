@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   pointValue: 1
+  listOfSprites:
+  - {fileID: 21300000, guid: 6cfdc9b559a51bd4dab389f716e46e75, type: 3}
   initialThrustX: 200
   initialThrustY: 200
   newPongDirections:

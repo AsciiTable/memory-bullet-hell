@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3194400155338045172}
   - component: {fileID: 7833147104568707292}
   m_Layer: 0
-  m_Name: BulletPrelim
+  m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3352732970056929221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.62, y: 0.07, z: -3.7441406}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ff37d7fa41514954c85556264cc7ab13, type: 3}
-  m_Color: {r: 0.4245283, g: 0.20625669, b: 0.20625669, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0b18a175cfd61d14e910cff392f49731, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,18 +97,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.043269873}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.9629115}
   m_EdgeRadius: 0
 --- !u!50 &3194400155338045172
 Rigidbody2D:
@@ -145,3 +145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   pointValue: 1
+  listOfSprites:
+  - {fileID: 21300000, guid: 9c03b1398db7eef458da97fdc229d28b, type: 3}
+  - {fileID: 21300000, guid: 0af96fbf88275b14394c8806abcaed2a, type: 3}
+  - {fileID: 21300000, guid: 16ae3ba4381258d4ca769e12cc904179, type: 3}
+  - {fileID: 21300000, guid: 275d33a69bdc9794898c5094c801d688, type: 3}
+  - {fileID: 21300000, guid: 0b18a175cfd61d14e910cff392f49731, type: 3}
+  - {fileID: 21300000, guid: b7755ea7f2f43ab42919db6ad721ef89, type: 3}

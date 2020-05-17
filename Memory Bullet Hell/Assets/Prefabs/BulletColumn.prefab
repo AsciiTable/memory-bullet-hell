@@ -48,6 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   pointValue: 1
+  listOfSprites:
+  - {fileID: 21300000, guid: 6a36d95111ac54a40ac3ae6c1202bb7e, type: 3}
+  - {fileID: 21300000, guid: 0e2bf604346d0444c9feaa11250662ca, type: 3}
   fullPointValue: 10
   preColumnTime: 0.5
   columnActiveTime: 5

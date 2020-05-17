@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     //[SerializeField] private TextMeshProUGUI levelText;
     private Rigidbody2D rb;
-    private Vector2 movement;    
+    private Vector2 movement;
+    private SpriteRenderer sprtrd;
 
     private void OnEnable()
     {
+        sprtrd = this.GetComponent<SpriteRenderer>();
         rb = this.GetComponent<Rigidbody2D>();
 /*        if(levelText != null)
             levelText.SetText("Level: " + SceneManager.GetActiveScene().name);*/
@@ -36,6 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetMovementInput() {
         movement.x = Input.GetAxisRaw("Horizontal");
+        if (movement.x < 0 && !sprtrd.flipX)
+            sprtrd.flipX = true;
+        else if (movement.x > 0 && sprtrd.flipX)
+            sprtrd.flipX = false;
         movement.y = Input.GetAxisRaw("Vertical");
     }
 

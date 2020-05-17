@@ -17,6 +17,7 @@ public class Knowledge : MonoBehaviour
     [SerializeField] private List<Vector2> newPongDirections;
     private float startTime;
     private float extraBulletCount;
+    private int bulletcount = 0;
     [SerializeField] private bool disableAll;
 
     [Header("Turret Customization")]
@@ -83,6 +84,8 @@ public class Knowledge : MonoBehaviour
                 bullet.GetComponent<BulletPong>().SetDirection(bouncyX, bouncyY);
                 bullet.GetComponent<BulletPong>().SetNewPongDirections(newPongDirections);
             }
+            bullet.GetComponent<BulletMovement>().SetSprite(bulletcount);
+            bulletcount++;
             bullet.GetComponent<BulletMovement>().SetBulletSpeed(bulletSpeed);
             bullet.transform.position = this.transform.position;
             bullet.transform.rotation = this.transform.rotation;

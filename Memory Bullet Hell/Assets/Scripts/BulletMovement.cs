@@ -6,6 +6,7 @@ public class BulletMovement : MonoBehaviour
 {
     [SerializeField] protected float speed = 5.0f;
     [SerializeField] protected int pointValue = 1;
+    [SerializeField] protected List<Sprite> listOfSprites;
     protected bool destroyOnTouch = true;
     //[SerializeField] private Transform startpoint;
     //[SerializeField] private float endpointX;
@@ -47,5 +48,9 @@ public class BulletMovement : MonoBehaviour
 
     public void SetBulletSpeed(float s) {
         speed = s;
+    }
+    public void SetSprite(int s) {
+        if(listOfSprites.Count > 1)
+            gameObject.GetComponent<SpriteRenderer>().sprite = listOfSprites[s % listOfSprites.Count];
     }
 }
