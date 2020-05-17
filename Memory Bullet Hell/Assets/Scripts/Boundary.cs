@@ -16,15 +16,15 @@ public class Boundary : MonoBehaviour
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
     }
 
-    private void OnEnable()
+/*    private void OnEnable()
     {
-        
+        UpdateHandler.UpdateOccurred += KeepTrackOfBorder;
     }
 
     private void OnDisable()
     {
-        
-    }
+        UpdateHandler.UpdateOccurred -= KeepTrackOfBorder;
+    }*/
 
     private void KeepTrackOfBorder() {
         Vector3 viewPos = transform.position;
