@@ -8,15 +8,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI levelText;
+    //[SerializeField] private TextMeshProUGUI levelText;
     private Rigidbody2D rb;
     private Vector2 movement;    
 
     private void OnEnable()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        if(levelText != null)
-            levelText.SetText("Level: " + SceneManager.GetActiveScene().name);
+/*        if(levelText != null)
+            levelText.SetText("Level: " + SceneManager.GetActiveScene().name);*/
         if(scoreText != null)
             scoreText.SetText("Score: 0");
         UpdateHandler.FixedUpdateOccurred += PlayerMove;
