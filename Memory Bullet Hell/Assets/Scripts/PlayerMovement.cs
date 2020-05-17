@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        //Debug.Log("Score: " + LevelManager.instance.GetScore()) ;
+        Debug.Log("Score: " + LevelManager.instance.GetScore()) ;
         UpdateHandler.FixedUpdateOccurred -= PlayerMove;
         UpdateHandler.UpdateOccurred -= GetMovementInput;
     }
