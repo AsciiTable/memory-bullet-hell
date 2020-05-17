@@ -39,7 +39,7 @@ public class Knowledge : MonoBehaviour
     }
 
     private void ShootByIntervals() {
-        if ((Time.time - startTime >= timeInterval) || (shoot != shootState)) {
+        if ((Time.time - startTime >= timeInterval && timeInterval != 0) || (shoot != shootState)) {
             Shoot();
             startTime = Time.time;
             shootState = shoot;

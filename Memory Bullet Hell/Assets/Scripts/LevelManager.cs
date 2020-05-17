@@ -109,7 +109,7 @@ public class LevelManager : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level Select"))
             return;
 
-        Debug.Log("Animator Time: " + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        Debug.Log("Animator Time: " + (animator.GetCurrentAnimatorStateInfo(0).normalizedTime * 10));
 
         if (levelStage == 0)
         {
