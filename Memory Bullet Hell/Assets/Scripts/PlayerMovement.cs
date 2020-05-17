@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag.Equals("Bullet") && collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch()) {
             int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            LevelManager.instance.AddScore(add);
             scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
         }
     }
@@ -51,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag.Equals("Bullet") && !collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch())
         {
             int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            LevelManager.instance.AddScore(add);
             scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
         }
     }
