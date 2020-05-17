@@ -33,13 +33,13 @@ public class Knowledge : MonoBehaviour
         startTime = Time.time;
         extraBulletCount = 0;
         UpdateHandler.UpdateOccurred += ShootByIntervals;
-        shootState = shoot;
     }
 
     private void OnDisable()
     {
         UpdateHandler.UpdateOccurred -= ShootByIntervals;
         Debug.Log(extraBulletCount + " extra " + bulletType.ToString() + "bullet(s) instantiated");
+        shootState = false;
     }
 
     private void ShootByIntervals() {
