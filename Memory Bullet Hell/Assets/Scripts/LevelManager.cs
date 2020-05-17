@@ -95,10 +95,6 @@ public class LevelManager : MonoBehaviour
         animator.SetTrigger("TransitionLevel");
         GetMusic();
         audioSource.Play();
-        GameObject[] bulletsToDisable = GameObject.FindGameObjectsWithTag("Bullet");
-        for (int i = 0; i < bulletsToDisable.Length; i++) {
-            bulletsToDisable[i].SetActive(false);
-        }
     }
     private void RestartLevel()
     {
@@ -117,6 +113,7 @@ public class LevelManager : MonoBehaviour
 
         Debug.Log("Animator Time: " + seconds + ":" + subseconds);
 
+        //Level Intro
         if (levelStage == 0)
         {
             if (!audioSource.isPlaying)
@@ -126,20 +123,37 @@ public class LevelManager : MonoBehaviour
                 StartLevel();
             }
         } 
+        //Tutorial
         else if (levelStage == 1)
         {
+            //Destroy Bullets before ending Level
+            if (score >= tutorialRequirements[level - 1])
+            {
+                GameObject[] bulletsToDisable = GameObject.FindGameObjectsWithTag("Bullet");
+                for (int i = 0; i < bulletsToDisable.Length; i++)
+                {
+                    bulletsToDisable[i].SetActive(false);
+                }
+            }
             if (!audioSource.isPlaying)
             {
                 if (score >= tutorialRequirements[level - 1])
                 {
+                    GameObject[] bulletsToDisable = GameObject.FindGameObjectsWithTag("Bullet");
+                    for (int i = 0; i < bulletsToDisable.Length; i++)
+                    {
+                        bulletsToDisable[i].SetActive(false);
+                    }
                     levelStage++;
                     animator.SetInteger("Stage", levelStage);
                     StartLevel();
+                    
                 }
                 else
                     RestartLevel();
             }
         }
+        //Level 
         if (levelStage == 2 || levelStage == 3)
         {
             if (!audioSource.isPlaying)
