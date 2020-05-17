@@ -11,6 +11,7 @@ public class Knowledge : MonoBehaviour
     }
     [SerializeField] BulletType bulletType;
     [SerializeField] private GameObject extraBulletsPlease;
+    [SerializeField] private float bulletSpeed = 5.0f;
     [SerializeField] private float bouncyX;
     [SerializeField] private float bouncyY;
     [SerializeField] private List<Vector2> newPongDirections;
@@ -82,6 +83,7 @@ public class Knowledge : MonoBehaviour
                 bullet.GetComponent<BulletPong>().SetDirection(bouncyX, bouncyY);
                 bullet.GetComponent<BulletPong>().SetNewPongDirections(newPongDirections);
             }
+            bullet.GetComponent<BulletMovement>().SetBulletSpeed(bulletSpeed);
             bullet.transform.position = this.transform.position;
             bullet.transform.rotation = this.transform.rotation;
             bullet.SetActive(true);
