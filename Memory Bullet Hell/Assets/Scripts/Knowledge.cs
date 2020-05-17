@@ -29,6 +29,7 @@ public class Knowledge : MonoBehaviour
         startTime = Time.time;
         extraBulletCount = 0;
         UpdateHandler.UpdateOccurred += ShootByIntervals;
+        shootState = shoot;
     }
 
     private void OnDisable()

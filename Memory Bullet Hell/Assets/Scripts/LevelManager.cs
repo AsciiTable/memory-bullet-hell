@@ -57,20 +57,17 @@ public class LevelManager : MonoBehaviour
         if (levelStage == 0)
         {
             audioSource.clip = tutorialMusic[level - 1];
-            audioSource.loop = false;
             return tutorialLoops[level - 1];
         }
         //2 - Tutorial Loop
         else if (levelStage == 1)
         {
             audioSource.clip = tutorialLoops[level - 1];
-            audioSource.loop = true;
             return tutorialMusic[level - 1];
         }
         else if (levelStage == 2)
         {
             audioSource.clip = levelMusic[level - 1];
-            audioSource.loop = false;
             return levelMusic[level - 1];
         }
         else
@@ -95,15 +92,24 @@ public class LevelManager : MonoBehaviour
     private void StartLevel()
     {
         Debug.Log("Changing Song");
+        animator.SetTrigger("TransitionLevel");
         GetMusic();
         audioSource.Play();
-        animator.SetTrigger("TransitionLevel");
+ 
+    }
+    private void RestartLevel()
+    {
+        animator.StopPlayback();
+        animator.Play(0, -1, 0f);
+        audioSource.Play();
     }
 
     private void CheckLevelEnded()
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level Select"))
             return;
+
+        Debug.Log("Animator Time: " + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
         if (levelStage == 0)
         {
@@ -116,11 +122,16 @@ public class LevelManager : MonoBehaviour
         } 
         else if (levelStage == 1)
         {
-            if(score >= tutorialRequirements[level - 1])
+            if (!audioSource.isPlaying)
             {
-                levelStage++;
-                animator.SetInteger("Stage", levelStage);
-                StartLevel();
+                if (score >= tutorialRequirements[level - 1])
+                {
+                    levelStage++;
+                    animator.SetInteger("Stage", levelStage);
+                    StartLevel();
+                }
+                else
+                    RestartLevel();
             }
         }
         if (levelStage == 2 || levelStage == 3)

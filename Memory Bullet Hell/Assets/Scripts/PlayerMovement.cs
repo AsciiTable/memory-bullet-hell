@@ -15,15 +15,15 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        levelText.SetText("Level: " + SceneManager.GetActiveScene().name);
-        scoreText.SetText("Score: 0");
+        //levelText.SetText("Level: " + SceneManager.GetActiveScene().name);
+        //scoreText.SetText("Score: 0");
         UpdateHandler.FixedUpdateOccurred += PlayerMove;
         UpdateHandler.UpdateOccurred += GetMovementInput;
     }
 
     private void OnDisable()
     {
-        Debug.Log("Score: " + LevelManager.instance.GetScore()) ;
+        //Debug.Log("Score: " + LevelManager.instance.GetScore()) ;
         UpdateHandler.FixedUpdateOccurred -= PlayerMove;
         UpdateHandler.UpdateOccurred -= GetMovementInput;
     }
@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag.Equals("Bullet") && collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch()) {
             int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
+            LevelManager.instance.AddScore(add);
+            //scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
         }
     }
 
@@ -50,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag.Equals("Bullet") && !collision.gameObject.GetComponent<BulletMovement>().getDestroyOnTouch())
         {
             int add = collision.gameObject.GetComponent<BulletMovement>().interactWithPlayer();
-            scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
+            LevelManager.instance.AddScore(add);
+            //scoreText.SetText("Score: " + LevelManager.instance.AddScore(add));
         }
     }
 }
