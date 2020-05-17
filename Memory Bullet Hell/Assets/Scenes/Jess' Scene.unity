@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 20084267}
   - component: {fileID: 20084268}
   - component: {fileID: 20084266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &176080804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 5974917620898338131, guid: 4adda1c367c27c842a2a8055f18cb210,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.887
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: 5974917620898338131, guid: 4adda1c367c27c842a2a8055f18cb210,
         type: 3}
