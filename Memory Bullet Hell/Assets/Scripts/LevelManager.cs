@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -22,6 +23,8 @@ public class LevelManager : MonoBehaviour
 
     private int[] tutorialRequirements = { 1, 6 };
 
+    [SerializeField] FancyAssText tutorialText;
+    [SerializeField] FancyAssText levelText;
 
     public int AddScore(int score) { 
         this.score += score;
@@ -49,6 +52,7 @@ public class LevelManager : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
         StartCoroutine(LevelSelect());
+        tutorialText.fadeInText();
     }
 
     private AudioClip GetMusic()
@@ -103,6 +107,13 @@ public class LevelManager : MonoBehaviour
         audioSource.Play();
     }
 
+    private IEnumerator LevelText()
+    {
+        levelText.fadeInText();
+        yield return new WaitForSeconds(2);
+        levelText.fadeOutText();
+    }
+
     private void CheckLevelEnded()
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Level Select"))
@@ -129,6 +140,7 @@ public class LevelManager : MonoBehaviour
             //Destroy Bullets before ending Level
             if (score >= tutorialRequirements[level - 1])
             {
+                tutorialText.fadeOutText();
                 GameObject[] bulletsToDisable = GameObject.FindGameObjectsWithTag("Bullet");
                 for (int i = 0; i < bulletsToDisable.Length; i++)
                 {
@@ -147,7 +159,7 @@ public class LevelManager : MonoBehaviour
                     levelStage++;
                     animator.SetInteger("Stage", levelStage);
                     StartLevel();
-                    
+                    StartCoroutine(LevelText());
                 }
                 else
                     RestartLevel();

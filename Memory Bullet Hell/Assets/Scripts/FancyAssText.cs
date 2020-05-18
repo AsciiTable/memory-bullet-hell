@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class FancyAssText : MonoBehaviour
 {
-    private Animator anim;
+    [SerializeField] private Animator anim;
 
     private void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
+        if (anim == null)
+            Debug.Log("To Jess: AAHHHHHHHHH");
+        else
+            anim = gameObject.GetComponent<Animator>();
     }
 
     public void fadeInText() {
