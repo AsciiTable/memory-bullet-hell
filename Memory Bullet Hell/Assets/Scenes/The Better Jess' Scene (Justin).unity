@@ -553,7 +553,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 6
+  timeInterval: 0
   shoot: 0
 --- !u!1 &948539024
 GameObject:
@@ -771,7 +771,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 6
+  timeInterval: 0
   shoot: 0
 --- !u!1 &1456169441
 GameObject:
@@ -994,27 +994,32 @@ PrefabInstance:
     - target: {fileID: 6774155714396496593, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6774155714396496593, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6774155714396496593, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6774155714396496593, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774155714396496593, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774155714396496593, guid: e03a22154235e6f43aa71463a77026d0,
+        type: 3}
+      propertyPath: m_text
+      value: ' 4:00 AM'
       objectReference: {fileID: 0}
     - target: {fileID: 6774155714396496599, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
@@ -1457,7 +1462,7 @@ MonoBehaviour:
   bouncyY: 0
   newPongDirections: []
   disableAll: 0
-  timeInterval: 6
+  timeInterval: 0
   shoot: 0
 --- !u!1001 &2129826390
 PrefabInstance:
@@ -1619,12 +1624,12 @@ PrefabInstance:
     - target: {fileID: 5962823969040393756, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: timeInterval
-      value: 4.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969040393756, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: shoot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969040393756, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
@@ -1649,12 +1654,12 @@ PrefabInstance:
     - target: {fileID: 5962823969237591610, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: timeInterval
-      value: 4.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969237591610, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: shoot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5962823969237591610, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
@@ -1689,12 +1694,12 @@ PrefabInstance:
     - target: {fileID: 5962823970198154975, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: timeInterval
-      value: 4.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5962823970198154975, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}
       propertyPath: shoot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5962823970198154975, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
         type: 3}

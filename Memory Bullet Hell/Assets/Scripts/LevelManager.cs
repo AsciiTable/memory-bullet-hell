@@ -140,7 +140,6 @@ public class LevelManager : MonoBehaviour
             //Destroy Bullets before ending Level
             if (score >= tutorialRequirements[level - 1])
             {
-                tutorialText.fadeOutText();
                 GameObject[] bulletsToDisable = GameObject.FindGameObjectsWithTag("Bullet");
                 for (int i = 0; i < bulletsToDisable.Length; i++)
                 {
@@ -149,6 +148,7 @@ public class LevelManager : MonoBehaviour
             }
             if (!audioSource.isPlaying)
             {
+                tutorialText.fadeOutText();
                 if (score >= tutorialRequirements[level - 1])
                 {
                     GameObject[] bulletsToDisable = GameObject.FindGameObjectsWithTag("Bullet");
