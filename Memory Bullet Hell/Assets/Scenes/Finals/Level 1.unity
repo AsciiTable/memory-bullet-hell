@@ -558,12 +558,12 @@ PrefabInstance:
     - target: {fileID: 1226916009571989253, guid: 0b9a707cf8e210f418249d048d088504,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 31.7
+      value: -468
       objectReference: {fileID: 0}
     - target: {fileID: 1226916009571989253, guid: 0b9a707cf8e210f418249d048d088504,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227
+      value: -342
       objectReference: {fileID: 0}
     - target: {fileID: 1226916009571989253, guid: 0b9a707cf8e210f418249d048d088504,
         type: 3}
@@ -917,12 +917,12 @@ PrefabInstance:
     - target: {fileID: 6774155714396496592, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -190
+      value: -625
       objectReference: {fileID: 0}
     - target: {fileID: 6774155714396496592, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 392
       objectReference: {fileID: 0}
     - target: {fileID: 6774155714396496592, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
@@ -1083,12 +1083,12 @@ PrefabInstance:
     - target: {fileID: 2611982621531140702, guid: a6bfc5c5cd40d2247bab8aa4aec1df31,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -190
+      value: -606
       objectReference: {fileID: 0}
     - target: {fileID: 2611982621531140702, guid: a6bfc5c5cd40d2247bab8aa4aec1df31,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 220
+      value: 478
       objectReference: {fileID: 0}
     - target: {fileID: 2611982621531140702, guid: a6bfc5c5cd40d2247bab8aa4aec1df31,
         type: 3}
@@ -1741,7 +1741,7 @@ PrefabInstance:
     - target: {fileID: 8581085814599832815, guid: a2385c9a7b527dc43b246bbcf55a66a2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2385c9a7b527dc43b246bbcf55a66a2, type: 3}
