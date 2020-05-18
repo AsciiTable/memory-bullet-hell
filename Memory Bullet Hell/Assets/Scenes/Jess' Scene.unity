@@ -271,6 +271,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 135606344}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &255764498 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6774155714396496595, guid: e03a22154235e6f43aa71463a77026d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1064012017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &255764499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6774155714396496428, guid: e03a22154235e6f43aa71463a77026d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1064012017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa3f5e7ae68033419f233a03c8df3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &256767771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1065,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 466187435}
     m_Modifications:
+    - target: {fileID: 6774155714396496428, guid: e03a22154235e6f43aa71463a77026d0,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 255764498}
     - target: {fileID: 6774155714396496592, guid: e03a22154235e6f43aa71463a77026d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1262,6 +1285,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5962823968435026530, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
+        type: 3}
+      propertyPath: tutorialText
+      value: 
+      objectReference: {fileID: 1702747433}
+    - target: {fileID: 5962823968435026530, guid: 4ce758990c8ce124d994b5b9c94bd6fd,
+        type: 3}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 255764499}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ce758990c8ce124d994b5b9c94bd6fd, type: 3}
 --- !u!1001 &1456104488
@@ -1355,6 +1388,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1702747431 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1226916009571989254, guid: 0b9a707cf8e210f418249d048d088504,
+    type: 3}
+  m_PrefabInstance: {fileID: 1899850929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1702747433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1226916009571989249, guid: 0b9a707cf8e210f418249d048d088504,
+    type: 3}
+  m_PrefabInstance: {fileID: 1899850929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa3f5e7ae68033419f233a03c8df3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1899850929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1367,6 +1418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level1TutorialText
       objectReference: {fileID: 0}
+    - target: {fileID: 1226916009571989249, guid: 0b9a707cf8e210f418249d048d088504,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1702747431}
     - target: {fileID: 1226916009571989252, guid: 0b9a707cf8e210f418249d048d088504,
         type: 3}
       propertyPath: m_textInfo.characterCount
