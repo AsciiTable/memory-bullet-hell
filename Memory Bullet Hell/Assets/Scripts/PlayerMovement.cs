@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
             if (add > 0) {
                 audio.Play();
                 LevelManager.instance.AddScore(add);
+                Grader.GraderInstance.AddToPlayerScore(add);
             }
             
             if(scoreText != null)
@@ -69,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 audio.Play();
                 LevelManager.instance.AddScore(add);
+                Grader.GraderInstance.AddToPlayerScore(add);
             }
             if (scoreText != null)
                 scoreText.SetText("Score: " + LevelManager.instance.GetScore());

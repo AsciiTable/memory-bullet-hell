@@ -89,21 +89,26 @@ public class Knowledge : MonoBehaviour
             bullet.GetComponent<BulletMovement>().SetBulletSpeed(bulletSpeed);
             bullet.transform.position = this.transform.position;
             bullet.transform.rotation = this.transform.rotation;
+            
             bullet.SetActive(true);
         }
         else {
             if (bulletType.Equals(BulletType.Bouncy))
             {
-                ObjectPooler.SharedInstanceBouncy.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
+                bullet = Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation);
+                ObjectPooler.SharedInstanceBouncy.AddNewPooledObject(bullet);
             }
             else if (bulletType.Equals(BulletType.Pong))
             {
-                ObjectPooler.SharedInstancePong.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
+                bullet = Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation);
+                ObjectPooler.SharedInstancePong.AddNewPooledObject(bullet);
             }
-            else
-                ObjectPooler.SharedInstanceBullet.AddNewPooledObject(Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation));
-
+            else {
+                bullet = Instantiate(extraBulletsPlease, this.transform.position, this.transform.rotation);
+                ObjectPooler.SharedInstanceBullet.AddNewPooledObject(bullet);
+            }
             extraBulletCount++;
         }
+        Grader.GraderInstance.AddToMaxScore(bullet.GetComponent<BulletMovement>().pointValue);
     }
 }

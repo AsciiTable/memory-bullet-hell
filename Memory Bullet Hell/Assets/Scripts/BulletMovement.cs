@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
     [SerializeField] protected float speed = 5.0f;
-    [SerializeField] protected int pointValue = 1;
+    [SerializeField] public int pointValue = 1;
     [SerializeField] protected List<Sprite> listOfSprites;
     protected bool destroyOnTouch = true;
     //[SerializeField] private Transform startpoint;

@@ -16,6 +16,7 @@ public class BulletColumn : BulletMovement
 
     protected override void OnEnable()
     {
+        Grader.GraderInstance.AddToMaxScore(fullPointValue);
         totalEarnedPoints = 0;
         destroyOnTouch = false;
         columnCol = gameObject.GetComponent<Collider2D>();
