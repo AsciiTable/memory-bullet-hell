@@ -10,7 +10,8 @@ public class Grader : MonoBehaviour
 
     private void OnEnable()
     {
-        GraderInstance = this;
+        if(GraderInstance == null)
+            GraderInstance = this;
         MaxScoreInLevel = 0;
         PlayerScoreForLevel = 0;
     }
