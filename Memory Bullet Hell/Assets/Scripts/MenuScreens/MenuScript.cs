@@ -67,5 +67,7 @@ public class MenuScript : MonoBehaviour
         lore.SetActive(false);
     }
 
-
+    public void GoToShowcaseDemo() {
+        SceneManager.LoadScene(2);
+    }
 }
