@@ -12,6 +12,7 @@ public class MenuScript : MonoBehaviour
      * This script depends on the scenes being in a specific order:
      * 0: Main Menu
      * 1: Game Scene
+     * 2: Score Scene
      */
     public void GoToGame()
     {
