@@ -18,6 +18,7 @@ public class PauseMenuScript : MenuScript
     }
     private void OnDisable()
     {
+        Time.timeScale = 1f;
         UpdateHandler.UpdateOccurred -= CheckPaused;
     }
 
