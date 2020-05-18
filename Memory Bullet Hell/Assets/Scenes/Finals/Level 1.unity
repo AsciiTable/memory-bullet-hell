@@ -840,6 +840,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1756661442365727627, guid: 04c3e60ad4643e14cb7b71b215292a4f,
+        type: 3}
+      propertyPath: amountToPool
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599614473106159537, guid: 04c3e60ad4643e14cb7b71b215292a4f,
+        type: 3}
+      propertyPath: amountToPool
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5254356019125100734, guid: 04c3e60ad4643e14cb7b71b215292a4f,
         type: 3}
       propertyPath: m_Enabled
