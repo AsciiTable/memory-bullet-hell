@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    /*
+     * This script depends on the scenes being in a specific order:
+     * 0: Main Menu
+     * 1: Game Scene
+     * 2: Score Scene
+     */
+
     public static LevelManager instance = null;
 
     private Animator animator = null;
@@ -181,7 +189,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
-                
+                SceneManager.LoadScene(2);
             }
         }
     }
