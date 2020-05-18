@@ -26,11 +26,19 @@ public class LevelManager : MonoBehaviour
     [SerializeField] FancyAssText tutorialText;
     [SerializeField] FancyAssText levelText;
 
-    public int AddScore(int score) { 
+    public int AddScore(int score) {
         this.score += score;
-        return this.score;
+        if (levelStage == 2)
+            return this.score;
+        else
+            return 0;
     }
-    public int GetScore() { return score; }
+    public int GetScore() {
+        if (levelStage == 2)
+            return this.score;
+        else
+            return 0;
+    }
     private void OnEnable()
     {
         //Singleton
@@ -99,6 +107,7 @@ public class LevelManager : MonoBehaviour
         animator.SetTrigger("TransitionLevel");
         GetMusic();
         audioSource.Play();
+        score = 0;
     }
     private void RestartLevel()
     {
@@ -158,8 +167,10 @@ public class LevelManager : MonoBehaviour
                     }
                     levelStage++;
                     animator.SetInteger("Stage", levelStage);
+                    Grader.GraderInstance.enabled = true;
                     StartLevel();
                     StartCoroutine(LevelText());
+                    
                 }
                 else
                     RestartLevel();

@@ -109,6 +109,7 @@ public class Knowledge : MonoBehaviour
             }
             extraBulletCount++;
         }
-        Grader.GraderInstance.AddToMaxScore(bullet.GetComponent<BulletMovement>().pointValue);
+        if(Grader.GraderInstance != null)
+            Grader.GraderInstance.AddToMaxScore(bullet.GetComponent<BulletMovement>().pointValue);
     }
 }

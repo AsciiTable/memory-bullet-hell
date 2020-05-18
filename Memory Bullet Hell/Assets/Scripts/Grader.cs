@@ -16,6 +16,19 @@ public class Grader : MonoBehaviour
         PlayerScoreForLevel = 0;
     }
 
+    private void Awake()
+    {
+        if (GraderInstance == null)
+        {
+            enabled = false;
+            GraderInstance = this;
+        }
+        else if(GraderInstance != this)
+        {
+            Destroy(this);
+        }
+    }
+
     public void ResetScore() {
         MaxScoreInLevel = 0;
         PlayerScoreForLevel = 0;
